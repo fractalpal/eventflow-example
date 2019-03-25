@@ -46,8 +46,8 @@ func NewMemory(ctx context.Context, repository app.Repository) *Aggregator {
 func (a *Aggregator) Apply(e eventflow.Event) (err error) {
 	defer log.AddFieldsForErr(a.Ctx, a.fields, err)
 	fields := logrus.Fields{}
-	fields["type"] = e.Type
-	fields["id"] = e.ID
+	fields["type"] = e.EventType()
+	fields["id"] = e.EventAggregatorID()
 	log.AddFields(a.Ctx, fields)
 
 	l := log.FromContext(a.Ctx)
@@ -55,24 +55,24 @@ func (a *Aggregator) Apply(e eventflow.Event) (err error) {
 
 	// default party path
 	partyPath := debtorParty
-	switch e.Type {
+	switch e.EventType() {
 	case app.PaymentCreated:
 		var p app.Payment
-		if err = json.Unmarshal(e.Data, &p); err != nil {
+		if err = json.Unmarshal(e.EventData(), &p); err != nil {
 			return errors.Wrap(err, "couldn't unmarshal data")
 		}
-		p.LastUpdate = e.Time
+		p.LastUpdate = e.EventTime()
 
 		if err := a.repository.Insert(a.Ctx, p); err != nil {
 			return errors.Wrap(err, "couldn't create in repository")
 		}
-		a.cache.Set(e.ID, p)
+		a.cache.Set(e.EventAggregatorID(), p)
 
 	case app.PaymentDeleted:
-		if err := a.repository.Delete(a.Ctx, e.ID); err != nil {
+		if err := a.repository.Delete(a.Ctx, e.EventAggregatorID()); err != nil {
 			return errors.Wrap(err, "couldn't create in repository")
 		}
-		a.cache.Remove(e.ID)
+		a.cache.Remove(e.EventAggregatorID())
 		break
 	case app.BeneficiaryUpdated:
 		// change party path and fallthrough
@@ -80,16 +80,16 @@ func (a *Aggregator) Apply(e eventflow.Event) (err error) {
 		fallthrough
 	case app.DebtorUpdated:
 		var party app.ThirdParty
-		if err = json.Unmarshal(e.Data, &party); err != nil {
+		if err = json.Unmarshal(e.EventData(), &party); err != nil {
 			return errors.Wrap(err, "couldn't unmarshal data")
 		}
-		party.PaymentID = e.ID
-		party.Time = e.Time
+		party.PaymentID = e.EventAggregatorID()
+		party.Time = e.EventTime()
 
 		if err = a.updateThirdParty(a.Ctx, party, partyPath); err != nil {
 			return
 		}
-		curr := a.cache.Get(e.ID)
+		curr := a.cache.Get(e.EventAggregatorID())
 		if curr == nil {
 			return errors.New("couldn't get from cache")
 		}
@@ -98,7 +98,7 @@ func (a *Aggregator) Apply(e eventflow.Event) (err error) {
 			AccountName:   party.AccountName,
 			AccountNumber: party.AccountNumber}
 
-		a.cache.Set(e.ID, *curr)
+		a.cache.Set(e.EventAggregatorID(), *curr)
 	default:
 		return app.ErrPartyNotSupported
 	}
