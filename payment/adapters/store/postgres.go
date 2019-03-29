@@ -3,6 +3,7 @@ package store
 import (
 	"context"
 	"database/sql"
+	"fmt"
 
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/golang-migrate/migrate/v4/database/postgres"
@@ -53,7 +54,13 @@ func (s *PostgresStore) Save(ctx context.Context, event eventflow.Event) (err er
 		return
 	}
 
-	if err = s.existsWithID(tx, ctx, event.EventAggregatorID()); err == nil {
+	paymentID, ok := event.Columns[app.AggregatePayments].(string)
+	if !ok {
+		err = fmt.Errorf("expected column '%s' is not a string", app.AggregatePayments)
+		return
+	}
+
+	if err = s.existsWithID(tx, ctx, paymentID); err == nil {
 		if err2 := tx.Rollback(); err2 != nil {
 			return errors.Wrap(err2, err.Error())
 		}
@@ -78,7 +85,12 @@ func (s *PostgresStore) Save(ctx context.Context, event eventflow.Event) (err er
 
 func (s *PostgresStore) insert(tx *sql.Tx, ctx context.Context, event eventflow.Event) (err error) {
 	query := `INSERT INTO events (id, type, created_at, payload, mapper) VALUES ($1,$2,$3,$4,$5)`
-	result, err := s.db.Exec(query, event.EventAggregatorID(), event.EventType(), event.EventTime(), event.EventData(), event.EventMapper())
+	paymentID, ok := event.Columns[app.AggregatePayments].(string)
+	if !ok {
+		err = fmt.Errorf("expected column '%s' is not a string", app.AggregatePayments)
+		return
+	}
+	result, err := s.db.Exec(query, paymentID, event.Type, event.Timestamp, event.Data, event.Mapper)
 	if err != nil {
 		return
 	}
@@ -107,7 +119,12 @@ func (s *PostgresStore) Update(ctx context.Context, event eventflow.Event) (err 
 	if err != nil {
 		return
 	}
-	if err = s.existsWithID(tx, ctx, event.EventAggregatorID()); err != nil {
+	paymentID, ok := event.Columns[app.AggregatePayments].(string)
+	if !ok {
+		err = fmt.Errorf("expected column '%s' is not a string", app.AggregatePayments)
+		return
+	}
+	if err = s.existsWithID(tx, ctx, paymentID); err != nil {
 		if err2 := tx.Rollback(); err2 != nil {
 			return errors.Wrap(err2, err.Error())
 		}

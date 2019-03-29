@@ -46,6 +46,8 @@ github.com/fractalpal/eventflow v0.0.0-20190319214133-5e6c83267747 h1:Vfw7cgvlKk
 github.com/fractalpal/eventflow v0.0.0-20190319214133-5e6c83267747/go.mod h1:7mWOQZsTXi2H8ZY2jfTirC2ANsqUeJJKpBARstv4GnA=
 github.com/fractalpal/eventflow v0.0.0-20190325202000-d213eb0366dc h1:kLMTfTWCQLeVUa3Pf+qqJK7LdsZeTCAfDJtnIitNGl4=
 github.com/fractalpal/eventflow v0.0.0-20190325202000-d213eb0366dc/go.mod h1:7mWOQZsTXi2H8ZY2jfTirC2ANsqUeJJKpBARstv4GnA=
+github.com/fractalpal/eventflow v0.0.0-20190329190634-716379d5bc12 h1:ySr1z92sJ1FyJ0fDNn+qzGZV5F9SdWmZfb5qSv9/VyM=
+github.com/fractalpal/eventflow v0.0.0-20190329190634-716379d5bc12/go.mod h1:7mWOQZsTXi2H8ZY2jfTirC2ANsqUeJJKpBARstv4GnA=
 github.com/fsnotify/fsnotify v1.4.7 h1:IXs+QLmnXW2CcXuY+8Mzv/fWEsPGWxqefPtCP5CnV9I=
 github.com/fsnotify/fsnotify v1.4.7/go.mod h1:jwhsz4b93w/PPRr/qN1Yymfu8t87LnFCMoQvtojpjFo=
 github.com/fsouza/fake-gcs-server v1.3.0/go.mod h1:Lq+43m2znsXfDKHnQMfdA0HpYYAEJsfizsbpk5k3TLo=

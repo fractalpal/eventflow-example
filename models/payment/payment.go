@@ -1,7 +1,5 @@
 package payment
 
-import "time"
-
 type ThirdParty struct {
 	PaymentID     string `json:"-" bson:"-"`
 	AccountName   string `json:"account_name" bson:"account_name"`
@@ -24,5 +22,5 @@ type Payment struct {
 	ID         string     `json:"id" bson:"id"`
 	Version    int        `json:"version" bson:"version"`
 	Attributes Attributes `json:"attributes" bson:"attributes"`
-	LastUpdate time.Time  `json:"last_update" bson:"last_update"`
+	LastUpdateTimestamp int64  `json:"last_update_timestamp" bson:"last_update_timestamp"`
 }

@@ -6,11 +6,11 @@ import (
 	"io/ioutil"
 	"net/http"
 
+	"github.com/fractalpal/eventflow-example/log"
+	"github.com/fractalpal/eventflow-example/payment/app"
 	"github.com/go-chi/chi"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
-	"github.com/fractalpal/eventflow-example/log"
-	"github.com/fractalpal/eventflow-example/payment/app"
 )
 
 type PaymentHandler struct {
