@@ -3,11 +3,11 @@ package service
 import (
 	"context"
 
+	"github.com/fractalpal/eventflow-example/log"
+	"github.com/fractalpal/eventflow-example/payment/app"
 	"github.com/google/uuid"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
-	"github.com/fractalpal/eventflow-example/log"
-	"github.com/fractalpal/eventflow-example/payment/app"
 )
 
 type IDProvider interface {

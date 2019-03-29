@@ -2,12 +2,13 @@ package http
 
 import (
 	"encoding/json"
-	"github.com/go-chi/chi"
-	"github.com/sirupsen/logrus"
-	"github.com/fractalpal/eventflow-example/log"
-	"github.com/fractalpal/eventflow-example/payment-query/app"
 	"net/http"
 	"strconv"
+
+	"github.com/fractalpal/eventflow-example/log"
+	"github.com/fractalpal/eventflow-example/payment-query/app"
+	"github.com/go-chi/chi"
+	"github.com/sirupsen/logrus"
 )
 
 type QueryHandler struct {

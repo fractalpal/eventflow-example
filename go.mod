@@ -3,7 +3,7 @@ module github.com/fractalpal/eventflow-example
 go 1.12
 
 require (
-	github.com/fractalpal/eventflow v0.0.0-20190329190634-716379d5bc12
+	github.com/fractalpal/eventflow v0.0.0-20190329201912-74a79fa0e21b
 	github.com/go-chi/chi v4.0.2+incompatible
 	github.com/golang-migrate/migrate/v4 v4.2.5
 	github.com/google/uuid v1.1.1

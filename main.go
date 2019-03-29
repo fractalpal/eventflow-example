@@ -2,13 +2,13 @@ package main
 
 import (
 	"context"
-	"github.com/pkg/errors"
-	"github.com/sirupsen/logrus"
+	"github.com/fractalpal/eventflow"
 	"github.com/fractalpal/eventflow-example/api/http"
 	"github.com/fractalpal/eventflow-example/log"
 	"github.com/fractalpal/eventflow-example/payment"
 	query "github.com/fractalpal/eventflow-example/payment-query"
-	"github.com/fractalpal/eventflow"
+	"github.com/pkg/errors"
+	"github.com/sirupsen/logrus"
 	"os"
 	"os/signal"
 	"syscall"

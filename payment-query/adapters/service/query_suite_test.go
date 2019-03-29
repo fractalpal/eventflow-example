@@ -4,11 +4,12 @@ package service_test
 
 import (
 	"context"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/suite"
+	"testing"
+
 	. "github.com/fractalpal/eventflow-example/payment-query/adapters/service"
 	"github.com/fractalpal/eventflow-example/payment-query/app"
-	"testing"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/suite"
 )
 
 type ServiceTestSuite struct {

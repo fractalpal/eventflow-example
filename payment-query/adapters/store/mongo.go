@@ -4,9 +4,9 @@ import (
 	"context"
 	"time"
 
-	"github.com/sirupsen/logrus"
 	"github.com/fractalpal/eventflow-example/log"
 	"github.com/fractalpal/eventflow-example/payment-query/app"
+	"github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"

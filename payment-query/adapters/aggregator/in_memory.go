@@ -4,12 +4,13 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/pkg/errors"
-	"github.com/sirupsen/logrus"
+
+	"github.com/fractalpal/eventflow"
 	"github.com/fractalpal/eventflow-example/log"
 	"github.com/fractalpal/eventflow-example/models/payment"
 	"github.com/fractalpal/eventflow-example/payment-query/app"
-	"github.com/fractalpal/eventflow"
+	"github.com/pkg/errors"
+	"github.com/sirupsen/logrus"
 )
 
 const (

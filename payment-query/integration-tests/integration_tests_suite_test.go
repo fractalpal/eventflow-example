@@ -4,16 +4,16 @@ package integration_tests_test
 
 import (
 	"context"
+	"sync"
+	"testing"
+
+	"github.com/fractalpal/eventflow"
+	"github.com/fractalpal/eventflow-example/api/http"
+	"github.com/fractalpal/eventflow-example/payment"
 	"github.com/kelseyhightower/envconfig"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"github.com/sirupsen/logrus"
-	"github.com/fractalpal/eventflow-example/api/http"
-	"github.com/fractalpal/eventflow-example/payment"
-	"github.com/fractalpal/eventflow-example/payment-query"
-	"github.com/fractalpal/eventflow"
-	"sync"
-	"testing"
 )
 
 var (

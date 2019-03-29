@@ -4,8 +4,9 @@ package service
 
 import (
 	"context"
-	"github.com/stretchr/testify/mock"
+
 	"github.com/fractalpal/eventflow-example/payment/app"
+	"github.com/stretchr/testify/mock"
 )
 
 // MockedIDProvider for IDProvider interface

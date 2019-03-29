@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/fractalpal/eventflow-example/payment/app"
 	"github.com/fractalpal/eventflow"
+	"github.com/fractalpal/eventflow-example/payment/app"
 )
 
 type jsonCommander struct {

@@ -5,15 +5,14 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/golang-migrate/migrate/v4"
+	"github.com/fractalpal/eventflow"
+	"github.com/fractalpal/eventflow-example/log"
+	"github.com/fractalpal/eventflow-example/payment/app"
 	"github.com/golang-migrate/migrate/v4/database/postgres"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 	_ "github.com/lib/pq"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
-	"github.com/fractalpal/eventflow-example/log"
-	"github.com/fractalpal/eventflow-example/payment/app"
-	"github.com/fractalpal/eventflow"
 )
 
 func Postgres(dataSource string) (*sql.DB, error) {
