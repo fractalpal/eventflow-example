@@ -1,14 +1,15 @@
-// +build integration
+// +build integration payment
 
 package integration_tests_test
 
 import (
 	"bytes"
 	"fmt"
-	. "github.com/onsi/ginkgo"
-	. "github.com/onsi/gomega"
 	"net/http"
 	"time"
+
+	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/gomega"
 )
 
 func createPaymentRequest(url, json string) (*http.Response, error) {

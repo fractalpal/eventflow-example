@@ -19,5 +19,5 @@ function finish {
 trap finish EXIT
 
 echo "staring client integration test"
-export PAYMENT_MONGO_URL=mongodb://usr:pwd@localhost:27018
-go test ./... -tags integration
+export QUERY_MONGO_URL=mongodb://usr:pwd@localhost:27018
+go test ./... -tags="integration query"

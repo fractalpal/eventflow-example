@@ -3,9 +3,9 @@ package repository
 import (
 	"context"
 
-	"github.com/sirupsen/logrus"
 	"github.com/fractalpal/eventflow-example/log"
 	"github.com/fractalpal/eventflow-example/payment-query/app"
+	"github.com/sirupsen/logrus"
 )
 
 //Basic Repository impl., without cache, just store calls

@@ -4,9 +4,9 @@ import (
 	"context"
 	"time"
 
-	"github.com/sirupsen/logrus"
 	"github.com/fractalpal/eventflow-example/log"
 	"github.com/fractalpal/eventflow-example/payment-query/app"
+	"github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -58,8 +58,8 @@ func (s *MongoCollection) UpdateThirdParty(ctx context.Context, thirdParty app.T
 	defer log.AddFieldsForErr(ctx, s.fields, err)
 
 	var result *mongo.UpdateResult
-	filter := bson.D{{"id", thirdParty.PaymentID}, {"last_update", bson.M{"$lt": thirdParty.Time}}}
-	update := bson.M{"$set": bson.M{"attributes." + partyKey: thirdParty.ThirdParty, "last_update": thirdParty.Time}}
+	filter := bson.D{{"id", thirdParty.PaymentID}, {"last_update_timestamp", bson.M{"$lt": thirdParty.Timestamp}}}
+	update := bson.M{"$set": bson.M{"attributes." + partyKey: thirdParty.ThirdParty, "last_update_timestamp": thirdParty.Timestamp}}
 	result, err = s.collection.UpdateOne(ctx, filter, update, &options.UpdateOptions{})
 	if err != nil {
 		return

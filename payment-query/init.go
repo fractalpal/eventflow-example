@@ -2,13 +2,11 @@ package payment_query
 
 import (
 	"context"
-	"github.com/kelseyhightower/envconfig"
-	"github.com/fractalpal/eventflow"
 	"time"
 
-	"github.com/go-chi/chi"
-	"github.com/go-chi/chi/middleware"
-	"github.com/sirupsen/logrus"
+	"github.com/fractalpal/eventflow"
+	"github.com/kelseyhightower/envconfig"
+
 	"github.com/fractalpal/eventflow-example/api/http"
 	"github.com/fractalpal/eventflow-example/payment-query/adapters/aggregator"
 	"github.com/fractalpal/eventflow-example/payment-query/adapters/repository"
@@ -16,6 +14,9 @@ import (
 	"github.com/fractalpal/eventflow-example/payment-query/adapters/store"
 	queryHttp "github.com/fractalpal/eventflow-example/payment-query/api/http"
 	"github.com/fractalpal/eventflow-example/payment-query/app"
+	"github.com/go-chi/chi"
+	"github.com/go-chi/chi/middleware"
+	"github.com/sirupsen/logrus"
 )
 
 func Initialize(ctx context.Context, l logrus.FieldLogger, subscriber eventflow.Subscriber) *http.Server {

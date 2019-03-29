@@ -22,4 +22,4 @@ trap finish EXIT
 echo "staring client integration test"
 export PAYMENT_POSTGRES_MIGRATIONS_PATH=file://../adapters/store/migrations
 export PAYMENT_POSTGRES_URL=postgres://usr:pwd@localhost:5555/events_test?sslmode=disable
-go test ./... -tags integration
+go test ./... -tags="integration payment"

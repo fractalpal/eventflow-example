@@ -1,8 +1,9 @@
 package aggregator
 
 import (
-	"github.com/fractalpal/eventflow-example/payment-query/app"
 	"sync"
+
+	"github.com/fractalpal/eventflow-example/payment-query/app"
 )
 
 type PaymentsCache interface {

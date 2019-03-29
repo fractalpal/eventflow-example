@@ -2,8 +2,10 @@ package payment
 
 import (
 	"database/sql"
-	"github.com/kelseyhightower/envconfig"
 	"time"
+
+	"github.com/kelseyhightower/envconfig"
+	"github.com/mattes/migrate"
 
 	"github.com/fractalpal/eventflow"
 	"github.com/fractalpal/eventflow-example/api/http"
@@ -15,7 +17,6 @@ import (
 	paymentHttp "github.com/fractalpal/eventflow-example/payment/api/http"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
-	"github.com/golang-migrate/migrate/v4"
 	"github.com/sirupsen/logrus"
 )
 

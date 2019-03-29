@@ -1,9 +1,10 @@
 package http
 
 import (
+	"time"
+
 	"github.com/go-chi/chi"
 	"github.com/sirupsen/logrus"
-	"time"
 )
 
 func ServerAddr(addr string) func(server *Server) {

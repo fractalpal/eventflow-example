@@ -5,8 +5,9 @@ package service
 import (
 	"context"
 	"errors"
-	"github.com/stretchr/testify/mock"
+
 	"github.com/fractalpal/eventflow-example/payment-query/app"
+	"github.com/stretchr/testify/mock"
 )
 
 // MockedRepository for Repository interface

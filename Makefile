@@ -1,4 +1,3 @@
-
 lint:
 	@if [ -n "$$(find . -type f -name \*.go -exec goimports -l {} \;)" ]; then \
 		echo "Go code is not formatted:" ; \
@@ -13,5 +12,6 @@ test:
 	go test ./... --cover -tags test
 
 test_integration:
-	@bash ./integration-tests/setup_db_and_run.sh
+	@bash ./payment/integration-tests/setup_db_and_run.sh
+	@bash ./payment-query/integration-tests/setup_db_and_run.sh
 
