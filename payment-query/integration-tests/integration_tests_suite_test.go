@@ -1,4 +1,4 @@
-// +build integration
+// +build integration query
 
 package integration_tests_test
 
@@ -6,6 +6,8 @@ import (
 	"context"
 	"sync"
 	"testing"
+
+	payment_query "github.com/fractalpal/eventflow-example/payment-query"
 
 	"github.com/fractalpal/eventflow"
 	"github.com/fractalpal/eventflow-example/api/http"

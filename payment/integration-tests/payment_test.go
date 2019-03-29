@@ -1,4 +1,4 @@
-// +build integration
+// +build integration payment
 
 package integration_tests_test
 

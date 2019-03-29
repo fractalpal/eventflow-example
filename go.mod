@@ -9,6 +9,7 @@ require (
 	github.com/google/uuid v1.1.1
 	github.com/kelseyhightower/envconfig v1.3.0
 	github.com/lib/pq v1.0.0
+	github.com/mattes/migrate v3.0.1+incompatible
 	github.com/onsi/ginkgo v1.8.0
 	github.com/onsi/gomega v1.5.0
 	github.com/pkg/errors v0.8.1

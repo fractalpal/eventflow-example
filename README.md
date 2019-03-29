@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/fractalpal/eventflow-example/tree/master.svg?style=svg)](https://circleci.com/gh/fractalpal/eventflow-example/tree/master)
+
 ## eventflow showcase project
 This is an example of usage of eventflow and implementation of event sourcing pattern in go.
 

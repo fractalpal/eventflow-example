@@ -1,3 +1,5 @@
+// +build integration query
+
 package integration_tests_test
 
 import (

@@ -5,6 +5,8 @@ import (
 	"database/sql"
 	"fmt"
 
+	migrate "github.com/golang-migrate/migrate/v4"
+
 	"github.com/fractalpal/eventflow"
 	"github.com/fractalpal/eventflow-example/log"
 	"github.com/fractalpal/eventflow-example/payment/app"

@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/kelseyhightower/envconfig"
+	"github.com/mattes/migrate"
 
 	"github.com/fractalpal/eventflow"
 	"github.com/fractalpal/eventflow-example/api/http"

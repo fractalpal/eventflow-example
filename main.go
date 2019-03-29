@@ -2,6 +2,10 @@ package main
 
 import (
 	"context"
+	"os"
+	"os/signal"
+	"syscall"
+
 	"github.com/fractalpal/eventflow"
 	"github.com/fractalpal/eventflow-example/api/http"
 	"github.com/fractalpal/eventflow-example/log"
@@ -9,9 +13,6 @@ import (
 	query "github.com/fractalpal/eventflow-example/payment-query"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
-	"os"
-	"os/signal"
-	"syscall"
 )
 
 type Config struct {
