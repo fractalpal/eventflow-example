@@ -15,18 +15,22 @@ const (
 	//OtherHappened      = eventflow.EventType("OtherHappened")
 )
 
+// CreatePaymentCommand
 type CreatePaymentCommand struct {
 	Payment
 }
 
+// DeletePaymentCommand
 type DeletePaymentCommand struct {
 	ID string
 }
 
+// UpdateBeneficiaryCommand
 type UpdateBeneficiaryCommand struct {
 	ThirdParty
 }
 
+// UpdateDebtorCommand
 type UpdateDebtorCommand struct {
 	ThirdParty
 }

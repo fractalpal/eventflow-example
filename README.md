@@ -1,3 +1,4 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/fractalpal/eventflow-example)](https://goreportcard.com/report/github.com/fractalpal/eventflow-example)
 [![CircleCI](https://circleci.com/gh/fractalpal/eventflow-example/tree/master.svg?style=svg)](https://circleci.com/gh/fractalpal/eventflow-example/tree/master)
 
 ## eventflow showcase project

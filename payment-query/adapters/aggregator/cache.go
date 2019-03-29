@@ -6,6 +6,7 @@ import (
 	"github.com/fractalpal/eventflow-example/payment-query/app"
 )
 
+// PaymentsCache interface
 type PaymentsCache interface {
 	Set(id string, payment app.Payment)
 	Get(id string) *app.Payment
@@ -19,18 +20,21 @@ type InMemoryCache struct {
 	rwMutex sync.RWMutex
 }
 
+// NewInMemoryCache returns new InMemoryCache
 func NewInMemoryCache() *InMemoryCache {
 	return &InMemoryCache{
 		data: map[string]app.Payment{},
 	}
 }
 
+// Set
 func (c *InMemoryCache) Set(id string, payment app.Payment) {
 	c.rwMutex.Lock()
 	defer c.rwMutex.Unlock()
 	c.data[id] = payment
 }
 
+// Get
 func (c *InMemoryCache) Get(id string) *app.Payment {
 	c.rwMutex.RLock()
 	defer c.rwMutex.RUnlock()
@@ -40,6 +44,7 @@ func (c *InMemoryCache) Get(id string) *app.Payment {
 	return nil
 }
 
+// Remove
 func (c *InMemoryCache) Remove(id string) {
 	c.rwMutex.Lock()
 	defer c.rwMutex.Unlock()

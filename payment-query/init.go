@@ -19,6 +19,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// Initialize
 func Initialize(ctx context.Context, l logrus.FieldLogger, subscriber eventflow.Subscriber) *http.Server {
 	// read env vars
 	type Config struct {

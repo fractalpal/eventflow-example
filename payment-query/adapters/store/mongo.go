@@ -12,11 +12,13 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
+// MongoCollection mongodb collection
 type MongoCollection struct {
 	fields     logrus.Fields
 	collection *mongo.Collection
 }
 
+// NewMongoCollection creates new MongoCollection instance
 func NewMongoCollection(ctx context.Context, sourceUrl, database, collection string, timeout time.Duration) (col *MongoCollection, err error) {
 	client, err := connect(ctx, sourceUrl, timeout)
 	if err != nil {
@@ -31,6 +33,7 @@ func NewMongoCollection(ctx context.Context, sourceUrl, database, collection str
 	}, err
 }
 
+// Insert creates new payment record
 func (s *MongoCollection) Insert(ctx context.Context, payment app.Payment) (err error) {
 	defer log.AddFieldsForErr(ctx, s.fields, err)
 	// ensure it's not exists
@@ -54,6 +57,7 @@ func (s *MongoCollection) Insert(ctx context.Context, payment app.Payment) (err 
 	return
 }
 
+// UpdateThirdParty updates third party data
 func (s *MongoCollection) UpdateThirdParty(ctx context.Context, thirdParty app.ThirdParty, partyKey string) (err error) {
 	defer log.AddFieldsForErr(ctx, s.fields, err)
 
@@ -81,6 +85,7 @@ func (s *MongoCollection) UpdateThirdParty(ctx context.Context, thirdParty app.T
 	return
 }
 
+// FindByID returns payment by id
 func (s *MongoCollection) FindByID(ctx context.Context, id string) (p app.Payment, err error) {
 	defer log.AddFieldsForErr(ctx, s.fields, err)
 
@@ -99,6 +104,7 @@ func (s *MongoCollection) FindByID(ctx context.Context, id string) (p app.Paymen
 	return
 }
 
+// FindAll returns payment by id
 func (s *MongoCollection) FindAll(ctx context.Context, page int64, limit int64) (p []app.Payment, err error) {
 	defer log.AddFieldsForErr(ctx, s.fields, err)
 
@@ -135,6 +141,7 @@ func (s *MongoCollection) FindAll(ctx context.Context, page int64, limit int64) 
 	return
 }
 
+// Delete deletes payment by id
 func (s *MongoCollection) Delete(ctx context.Context, id string) (err error) {
 	defer log.AddFieldsForErr(ctx, s.fields, err)
 
