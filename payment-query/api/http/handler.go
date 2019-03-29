@@ -11,6 +11,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// QueryHandler handler
 type QueryHandler struct {
 	logger       logrus.FieldLogger
 	service      app.Service
@@ -18,6 +19,7 @@ type QueryHandler struct {
 	defaultLimit int64
 }
 
+// NewHandler returns new QueryHandler
 func NewHandler(logger logrus.FieldLogger, service app.Service) *QueryHandler {
 	return &QueryHandler{
 		logger:       logger,
@@ -27,14 +29,18 @@ func NewHandler(logger logrus.FieldLogger, service app.Service) *QueryHandler {
 	}
 }
 
+// Links links info for response
 type Links struct {
 	Self string `json:"self"`
 }
+
+// PaymentResponse http payment response
 type PaymentResponse struct {
 	Data  app.Payment
 	Links Links `json:"links"`
 }
 
+// Get handler
 func (h *QueryHandler) Get(w http.ResponseWriter, r *http.Request) {
 	l := h.logger.WithField("method", []string{"get"})
 	ctx := log.ContextWithLogger(r.Context(), l)
@@ -67,6 +73,7 @@ type ListResponse struct {
 	Links Links         `json:"links"`
 }
 
+// List handler
 func (h *QueryHandler) List(w http.ResponseWriter, r *http.Request) {
 	l := h.logger.WithField("method", []string{"get"})
 	ctx := log.ContextWithLogger(r.Context(), l)

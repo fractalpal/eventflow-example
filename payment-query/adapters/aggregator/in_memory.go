@@ -34,6 +34,7 @@ type Aggregator struct {
 	cache      PaymentsCache
 }
 
+// NewMemory return new Aggregator
 func NewMemory(ctx context.Context, repository app.Repository) *Aggregator {
 	fields := logrus.Fields{}
 	fields["aggregator"] = []string{"NewMemory"}
@@ -45,6 +46,7 @@ func NewMemory(ctx context.Context, repository app.Repository) *Aggregator {
 	}
 }
 
+// Apply event
 func (a *Aggregator) Apply(e eventflow.Event) (err error) {
 	defer log.AddFieldsForErr(a.Ctx, a.fields, err)
 	paymentID, ok := e.Columns[app.AggregatePayments].(string)

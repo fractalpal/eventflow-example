@@ -29,6 +29,7 @@ type Config struct {
 	PostgresMigrationsPath string `envconfig:"payment_postgres_migrations_path" default:"file://payment/adapters/store/migrations"`
 }
 
+// Initialize
 func Initialize(l logrus.FieldLogger, publisher eventflow.Publisher) (*http.Server, *sql.DB) {
 	var config Config
 	err := envconfig.Process("payment", &config)

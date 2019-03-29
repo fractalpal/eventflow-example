@@ -4,6 +4,7 @@ import (
 	"context"
 )
 
+// Repository interface for payments
 type Repository interface {
 	FindByID(context.Context, string) (Payment, error)
 	FindAll(context.Context, int64, int64) ([]Payment, error)
